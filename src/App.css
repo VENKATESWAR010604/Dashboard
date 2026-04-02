@@ -1,0 +1,6 @@
+/* Keep minimal or empty - Tailwind handles styling */
+
+#root {
+  margin: 0;
+  padding: 0;
+}
