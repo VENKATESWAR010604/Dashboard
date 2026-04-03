@@ -1,26 +1,12 @@
-import { useState, useEffect } from "react";
-import Login from "./components/Login";
+import { useState } from "react";
 import Dashboard from "./components/Dashboard";
-import "./App.css";
-
-function App() {
+import Login from "./components/Login";
+export default function App() {
   const [user, setUser] = useState(null);
 
-  // Load user from localStorage
-  useEffect(() => {
-    const saved = localStorage.getItem("user");
-    if (saved) setUser(JSON.parse(saved));
-  }, []);
+  if (!user) {
+    return <Login setUser={setUser} />;
+  }
 
-  return (
-    <div className="min-h-screen">
-      {user ? (
-        <Dashboard user={user} setUser={setUser} />
-      ) : (
-        <Login setUser={setUser} />
-      )}
-    </div>
-  );
+  return <Dashboard user={user} setUser={setUser} />;
 }
-
-export default App;

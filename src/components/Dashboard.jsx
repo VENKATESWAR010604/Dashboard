@@ -15,7 +15,7 @@ export default function Dashboard({ user, setUser }) {
   const [active, setActive] = useState("Dashboard");
 
   return (
-    <div className="flex">
+    <div className="flex overflow-hidden">
 
       {/* SIDEBAR */}
       <Sidebar
@@ -25,17 +25,17 @@ export default function Dashboard({ user, setUser }) {
       />
 
       {/* MAIN AREA */}
-      <div className="flex-1 ml-64 bg-[#020617] min-h-screen">
+      <div className="flex-1 ml-0 lg:ml-64 bg-[#020617] min-h-screen">
 
-        {/* 🔥 TOPBAR (FIX HERE) */}
+        {/* TOPBAR */}
         <Topbar
           user={user}
           setUser={setUser}
-          setActive={setActive}   // ✅ ADD THIS
+          setActive={setActive}
         />
 
         {/* CONTENT */}
-        <div className="pt-20 px-6">
+        <div className="pt-20 px-6 overflow-y-auto h-screen">
 
           {active === "Dashboard" && <MainContent />}
           {active === "Transactions" && <Transactions />}
